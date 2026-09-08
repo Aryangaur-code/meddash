@@ -1,0 +1,170 @@
+.topbar {
+  height: var(--topbar-height);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-base);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 200px;
+}
+
+.logoPlaceholder {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background-color: var(--color-accent);
+}
+
+.institutionName {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-surface-overlay);
+  border: 1px solid transparent;
+  border-radius: var(--radius-card);
+  padding: 0 12px;
+  height: 36px;
+  width: 100%;
+  max-width: 480px;
+  cursor: pointer;
+  transition: border-color var(--transition-util);
+  color: var(--color-text-muted);
+}
+
+.searchBar:hover {
+  border-color: var(--color-border-strong);
+}
+
+.searchIcon {
+  margin-right: 8px;
+}
+
+.searchPlaceholder {
+  flex: 1;
+  text-align: left;
+  font-size: 14px;
+}
+
+.searchShortcut {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background-color: var(--color-surface-base);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 200px;
+  justify-content: flex-end;
+}
+
+.recordingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-status-critical);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(217, 48, 37, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(217, 48, 37, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(217, 48, 37, 0); }
+}
+
+.recordingLabel {
+  color: var(--color-status-critical);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  color: var(--color-text-ghost);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton:hover {
+  color: var(--color-text-primary);
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--color-status-critical);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileDropdown {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+
+.profileAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-surface-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.profileName {
+  font-size: 14px;
+  font-weight: 500;
+}

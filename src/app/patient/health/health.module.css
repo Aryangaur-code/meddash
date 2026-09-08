@@ -1,0 +1,209 @@
+.container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: var(--font-sans);
+  color: white;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.microGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  grid-column: 1 / -1;
+}
+
+.microPanel {
+  background: rgba(28, 28, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.microTitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.microValue {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.microUnit {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.panel {
+  background: rgba(28, 28, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.fullWidthPanel {
+  grid-column: 1 / -1;
+}
+
+.panelTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Apple Fitness Rings Style Summary */
+.fitnessSummary {
+  display: flex;
+  gap: 24px;
+  justify-content: space-around;
+  margin-bottom: 24px;
+}
+
+.metricCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.metricValue {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.redText { color: #fa114f; }
+.greenText { color: #a4ff00; }
+.blueText { color: #00e5ff; }
+
+/* Knowledge Graph Summary */
+.kgContent {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #e5e5ea;
+}
+
+.kgHighlight {
+  color: #a4ff00;
+  font-weight: 600;
+}
+
+.kgWarning {
+  color: #ff9f0a;
+  font-weight: 600;
+}
+
+/* Supply Tracker */
+.supplyItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.supplyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.medName {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.daysLeft {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.progressBarBg {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+}
+
+.fillNormal {
+  background: #32d74b;
+}
+
+.fillWarning {
+  background: #ff453a;
+}
+
+.alertBadge {
+  background: rgba(255, 69, 58, 0.15);
+  color: #ff453a;
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}

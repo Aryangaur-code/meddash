@@ -1,0 +1,153 @@
+.workspace {
+  display: flex;
+  height: 100%;
+  gap: 24px;
+  padding: 24px;
+}
+
+.transcriptPanel {
+  flex: 1;
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.aiPanel {
+  width: 450px;
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.panelHeader {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panelHeader h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.recordingStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-danger);
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.transcriptFlow {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message {
+  line-height: 1.5;
+}
+
+.speaker {
+  font-weight: 600;
+  margin-right: 8px;
+  color: var(--color-text-base);
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.text {
+  margin-top: 4px;
+  color: var(--color-text-base);
+}
+
+.aiContent {
+  padding: 0 24px 24px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.soapSection {
+  margin-bottom: 12px;
+}
+
+.soapSection strong {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.soapSection p {
+  white-space: pre-wrap;
+}
+
+.codeList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.codeItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.codeDesc {
+  font-size: 13px;
+}
+
+.finalizeBtn {
+  width: 100%;
+  margin-top: 24px;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-base);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.finalizeBtn:hover {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}

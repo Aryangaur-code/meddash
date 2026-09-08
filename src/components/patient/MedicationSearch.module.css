@@ -1,0 +1,158 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px);
+  padding: 24px;
+  gap: 24px;
+}
+
+.searchHeader {
+  background-color: var(--color-surface-base);
+  padding: 16px 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-surface-raised);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: all 0.2s;
+}
+
+.searchBarContainer:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(164, 255, 0, 0.2);
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.mainContent {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  min-height: 0; /* Important for flex child scrolling */
+}
+
+.resultsList {
+  flex: 1;
+  background-color: var(--color-surface-base);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.resultCard {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resultCard:hover {
+  background-color: var(--color-surface-raised);
+}
+
+.resultCard.selected {
+  background-color: rgba(164, 255, 0, 0.05);
+  border-left: 4px solid var(--color-accent);
+}
+
+.medName {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.medContains {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.detailsPanel {
+  flex: 2;
+  background-color: var(--color-surface-base);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow-y: auto;
+}
+
+.detailsContent {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detailsTitle {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.detailsContains {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  margin: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.infoSection {
+  background-color: var(--color-surface-raised);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.infoSection h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px 0;
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.infoSection p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap; /* to preserve newlines from DB */
+}
+
+.emptyDetails {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 40px;
+}
+
+.emptyDetails p {
+  margin-top: 16px;
+  max-width: 400px;
+  line-height: 1.5;
+}

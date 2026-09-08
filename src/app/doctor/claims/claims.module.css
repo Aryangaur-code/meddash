@@ -1,0 +1,144 @@
+.container {
+  padding: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.statsRow {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.board {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  overflow-x: auto;
+  padding-bottom: 24px;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--color-surface-base);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.columnHeader {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.columnTitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-base);
+}
+
+.columnCount {
+  background-color: var(--color-surface-raised);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cardList {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.card {
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  position: relative;
+  cursor: grab;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.claimId {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.claimAmount {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-text-base);
+}
+
+.cardBody {
+  margin-bottom: 16px;
+}
+
+.patientName {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.cardFooter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.statusIndicator {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  color: var(--color-text-muted);
+}
+
+.aiIcon {
+  color: var(--color-accent);
+}
+
+.successIcon {
+  color: var(--color-success);
+}
+
+.dangerIcon {
+  color: var(--color-danger);
+}

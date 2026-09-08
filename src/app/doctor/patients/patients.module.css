@@ -1,0 +1,185 @@
+.container {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.listPanel {
+  width: 320px;
+  border-right: 1px solid var(--color-border);
+  background-color: var(--color-surface-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.panelTitle {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.searchBox {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-base);
+  font-family: var(--font-sans);
+}
+
+.patientList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.patientItem {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.patientItem:hover {
+  background-color: var(--color-surface-raised);
+}
+
+.patientHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.patientName {
+  font-weight: 500;
+  color: var(--color-text-base);
+}
+
+.patientMrn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.patientDetails {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.profilePanel {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+  background-color: var(--color-surface-base);
+}
+
+.profileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.profileName {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.profileSub {
+  color: var(--color-text-muted);
+}
+
+.primaryBtn {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.vitalsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.vitalCard {
+  background-color: var(--color-surface-raised);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.vitalLabel {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.vitalValue {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.infoSections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.infoTitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 8px;
+}
+
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.infoList li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-surface-raised);
+  font-size: 14px;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-surface-raised);
+}
+
+.timelineDate {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  font-size: 14px;
+  width: 100px;
+}
+
+.timelineDesc {
+  font-weight: 500;
+}
