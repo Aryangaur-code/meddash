@@ -168,7 +168,21 @@ export default function PharmacyConnect() {
                 >
                   <div>
                     <div className={styles.pharmacyName}>{pharmacy.name} {pharmacy.isOpen ? '🟢' : '🔴'}</div>
-                    <div className={styles.pharmacyDetails}>{pharmacy.address} • {pharmacy.rating} ⭐ • Delivery: {pharmacy.delivery}</div>
+                    <div className={styles.pharmacyDetails} style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>{pharmacy.address} • {pharmacy.rating} ⭐ • Delivery: {pharmacy.delivery}</div>
+                    
+                    {selectedPharmacy === pharmacy.id && (
+                      <div style={{ marginTop: '12px', borderTop: '1px solid var(--border-subtle)', paddingTop: '12px' }}>
+                        <p style={{ margin: '0 0 8px 0', fontSize: '14px', color: 'var(--text-primary)' }}><strong>Contact:</strong> {pharmacy.contact}</p>
+                        <iframe 
+                          width="100%" 
+                          height="150" 
+                          frameBorder="0" 
+                          scrolling="no" 
+                          src={`https://www.openstreetmap.org/export/embed.html?bbox=75.7%2C26.9%2C75.8%2C27.0&amp;layer=mapnik&amp;marker=26.9124%2C75.7873`} 
+                          style={{ border: '1px solid var(--border-subtle)', borderRadius: '8px' }}
+                        ></iframe>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))

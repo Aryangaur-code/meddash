@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import styles from './prescriptions.module.css';
 import { prescriptions } from '@/data/mockData';
@@ -10,7 +12,7 @@ export default function Prescriptions() {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Prescription Builder</h1>
-        <button className={styles.primaryBtn}><IconSend size={18} /> Send to Pharmacy</button>
+        <button className={styles.primaryBtn} onClick={() => alert('Order sent to Dawaa Dost')}><IconSend size={18} /> Send to Pharmacy</button>
       </div>
 
       <div className={styles.content}>
