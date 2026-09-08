@@ -119,7 +119,7 @@ export default function MedicationSearch() {
         <div className={styles.resultsList}>
           {loading && <div style={{ padding: '20px', color: 'var(--color-text-muted)' }}>Searching MID database...</div>}
           {!loading && results.length === 0 && query.length > 1 && (
-            <div style={{ padding: '20px', color: 'var(--color-text-muted)' }}>No medications found matching "{query}"</div>
+            <div style={{ padding: '20px', color: 'var(--color-text-muted)' }}>No medications found matching &quot;{query}&quot;</div>
           )}
           {!loading && results.map((med, idx) => (
             <div 

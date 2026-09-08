@@ -231,34 +231,35 @@ export type Medicine = {
   stock: number;
   description: string;
   gstRate: number;
+  hsn: string;
 };
 
 export const mockMedicines: Medicine[] = [
   // Type 2 Diabetes
-  { id: 'MED-1', name: 'Metformin 500mg', diseaseCategory: 'Type 2 Diabetes', price: 45, stock: 120, description: 'Standard oral diabetes medicine.', gstRate: 5 },
-  { id: 'MED-2', name: 'Glimepiride 2mg', diseaseCategory: 'Type 2 Diabetes', price: 65, stock: 80, description: 'Helps control blood sugar levels.', gstRate: 5 },
-  { id: 'MED-3', name: 'Sitagliptin 100mg', diseaseCategory: 'Type 2 Diabetes', price: 210, stock: 50, description: 'DPP-4 inhibitor for adults with type 2 diabetes.', gstRate: 5 },
+  { id: 'MED-1', name: 'Metformin 500mg', diseaseCategory: 'Type 2 Diabetes', price: 45, stock: 120, description: 'Standard oral diabetes medicine.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-2', name: 'Glimepiride 2mg', diseaseCategory: 'Type 2 Diabetes', price: 65, stock: 80, description: 'Helps control blood sugar levels.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-3', name: 'Sitagliptin 100mg', diseaseCategory: 'Type 2 Diabetes', price: 210, stock: 50, description: 'DPP-4 inhibitor for adults with type 2 diabetes.', gstRate: 5, hsn: '3004' },
   
   // Asthma
-  { id: 'MED-4', name: 'Salbutamol Inhaler (100mcg)', diseaseCategory: 'Asthma', price: 150, stock: 45, description: 'Reliever inhaler for sudden breathing problems.', gstRate: 5 },
-  { id: 'MED-5', name: 'Budesonide Inhaler (200mcg)', diseaseCategory: 'Asthma', price: 320, stock: 30, description: 'Preventer inhaler to reduce inflammation.', gstRate: 5 },
-  { id: 'MED-6', name: 'Montelukast 10mg', diseaseCategory: 'Asthma', price: 110, stock: 60, description: 'Daily pill for asthma prevention.', gstRate: 5 },
+  { id: 'MED-4', name: 'Salbutamol Inhaler (100mcg)', diseaseCategory: 'Asthma', price: 150, stock: 45, description: 'Reliever inhaler for sudden breathing problems.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-5', name: 'Budesonide Inhaler (200mcg)', diseaseCategory: 'Asthma', price: 320, stock: 30, description: 'Preventer inhaler to reduce inflammation.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-6', name: 'Montelukast 10mg', diseaseCategory: 'Asthma', price: 110, stock: 60, description: 'Daily pill for asthma prevention.', gstRate: 5, hsn: '3004' },
 
   // Hypertension
-  { id: 'MED-7', name: 'Amlodipine 5mg', diseaseCategory: 'Hypertension', price: 35, stock: 150, description: 'Calcium channel blocker to lower blood pressure.', gstRate: 5 },
-  { id: 'MED-8', name: 'Losartan 50mg', diseaseCategory: 'Hypertension', price: 55, stock: 90, description: 'Keeps blood vessels from narrowing.', gstRate: 5 },
-  { id: 'MED-9', name: 'Telmisartan 40mg', diseaseCategory: 'Hypertension', price: 85, stock: 75, description: 'Angiotensin II receptor blocker.', gstRate: 5 },
+  { id: 'MED-7', name: 'Amlodipine 5mg', diseaseCategory: 'Hypertension', price: 35, stock: 150, description: 'Calcium channel blocker to lower blood pressure.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-8', name: 'Losartan 50mg', diseaseCategory: 'Hypertension', price: 55, stock: 90, description: 'Keeps blood vessels from narrowing.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-9', name: 'Telmisartan 40mg', diseaseCategory: 'Hypertension', price: 85, stock: 75, description: 'Angiotensin II receptor blocker.', gstRate: 5, hsn: '3004' },
 
   // General / Viral
-  { id: 'MED-10', name: 'Paracetamol 650mg', diseaseCategory: 'General / Fever', price: 20, stock: 500, description: 'Fever and pain reliever.', gstRate: 5 },
-  { id: 'MED-11', name: 'Azithromycin 500mg', diseaseCategory: 'General / Fever', price: 120, stock: 100, description: 'Antibiotic for bacterial infections.', gstRate: 5 },
-  { id: 'MED-12', name: 'Vitamin C + Zinc', diseaseCategory: 'General / Fever', price: 60, stock: 200, description: 'Immunity boosting dietary supplement.', gstRate: 18 },
+  { id: 'MED-10', name: 'Paracetamol 650mg', diseaseCategory: 'General / Fever', price: 20, stock: 500, description: 'Fever and pain reliever.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-11', name: 'Azithromycin 500mg', diseaseCategory: 'General / Fever', price: 120, stock: 100, description: 'Antibiotic for bacterial infections.', gstRate: 5, hsn: '3004' },
+  { id: 'MED-12', name: 'Vitamin C + Zinc', diseaseCategory: 'General / Fever', price: 60, stock: 200, description: 'Immunity boosting dietary supplement.', gstRate: 5, hsn: 'Product-dependent' },
   
   // Critical / Life-Saving (Example for 0%)
-  { id: 'MED-13', name: 'Human Blood Plasma', diseaseCategory: 'General / Fever', price: 1500, stock: 5, description: 'Critical life-saving blood component.', gstRate: 0 },
+  { id: 'MED-13', name: 'Human Blood Plasma', diseaseCategory: 'General / Fever', price: 1500, stock: 5, description: 'Critical life-saving blood component.', gstRate: 0, hsn: '3002' },
   
   // Ayurvedic / Specialized (Example for 12%)
-  { id: 'MED-14', name: 'Ayurvedic Cough Syrup', diseaseCategory: 'General / Fever', price: 95, stock: 40, description: 'Specialized alternative medicine.', gstRate: 12 }
+  { id: 'MED-14', name: 'Ayurvedic Cough Syrup', diseaseCategory: 'General / Fever', price: 95, stock: 40, description: 'Specialized alternative medicine.', gstRate: 5, hsn: '3004' }
 ];
 
 export const wearableVitals = [

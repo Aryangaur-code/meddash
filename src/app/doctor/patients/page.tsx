@@ -141,7 +141,7 @@ export default function Patients() {
                        ))}
                      </ul>
                      <div style={{ marginTop: '12px', padding: '8px', backgroundColor: 'var(--color-surface-raised)', borderRadius: '4px', fontSize: '12px', color: 'var(--color-text-muted)' }}>
-                       <strong>RAG Evidence:</strong> "NSAID hypersensitivity is frequently underreported. Literature suggests cross-reactivity risks..." <a href="#" style={{ color: 'var(--color-accent)', textDecoration: 'none' }}>Read More</a>
+                       <strong>RAG Evidence:</strong> &quot;NSAID hypersensitivity is frequently underreported. Literature suggests cross-reactivity risks...&quot; <a href="#" style={{ color: 'var(--color-accent)', textDecoration: 'none' }}>Read More</a>
                      </div>
                    </div>
                 </div>
@@ -195,7 +195,7 @@ export default function Patients() {
                   {/* Medicine Intelligence Alert */}
                   {(selectedPatient.medications || []).some((m: string) => m.toLowerCase().includes('metformin')) && (
                     <div style={{ margin: '16px 16px 0 16px', padding: '8px 12px', backgroundColor: 'rgba(250, 17, 79, 0.1)', border: '1px solid var(--color-status-error)', borderRadius: '4px', fontSize: '12px', color: 'var(--color-status-error)' }}>
-                      <strong>AI Pharmacovigilance:</strong> Monitor renal function periodically while on Metformin. Patient's recent labs indicate borderline clearance.
+                      <strong>AI Pharmacovigilance:</strong> Monitor renal function periodically while on Metformin. Patient&apos;s recent labs indicate borderline clearance.
                     </div>
                   )}
 

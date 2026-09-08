@@ -14,7 +14,7 @@ export default function PharmacyConnect() {
   // Tabs & E-commerce State
   const [activeTab, setActiveTab] = useState<'inventory' | 'chat'>('inventory');
   const [selectedDisease, setSelectedDisease] = useState('Type 2 Diabetes');
-  const [cart, setCart] = useState<{ id: string; name: string; price: number; qty: number; gstRate: number }[]>([]);
+  const [cart, setCart] = useState<{ id: string; name: string; price: number; qty: number; gstRate: number; hsn: string }[]>([]);
   const [paymentMethod, setPaymentMethod] = useState('COD');
 
   const filteredMedicines = useMemo(() => {
@@ -57,7 +57,7 @@ export default function PharmacyConnect() {
       if (existing) {
         return prev.map(item => item.id === med.id ? { ...item, qty: item.qty + 1 } : item);
       }
-      return [...prev, { id: med.id, name: med.name, price: med.price, qty: 1, gstRate: med.gstRate || 5 }];
+      return [...prev, { id: med.id, name: med.name, price: med.price, qty: 1, gstRate: med.gstRate !== undefined ? med.gstRate : 5, hsn: med.hsn || '3004' }];
     });
   };
 
@@ -263,7 +263,9 @@ export default function PharmacyConnect() {
                       <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid var(--border-subtle)' }}>
                         <div style={{ flex: 1 }}>
                           <div style={{ fontWeight: 600 }}>{item.name}</div>
-                          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>₹{item.price} each (GST {item.gstRate}%)</div>
+                          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                            ₹{item.price} each | HSN: {item.hsn || '3004'} | GST: {item.gstRate}% (CGST {item.gstRate/2}% + SGST {item.gstRate/2}%)
+                          </div>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', background: 'var(--surface-1)', border: '1px solid var(--border-subtle)', borderRadius: '4px' }}>
@@ -295,7 +297,10 @@ export default function PharmacyConnect() {
                       <span>Subtotal:</span> <span>₹{cartTotal.toFixed(2)}</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
-                      <span>GST:</span> <span>₹{gstTotal.toFixed(2)}</span>
+                      <span>CGST (Intra-state):</span> <span>₹{(gstTotal / 2).toFixed(2)}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
+                      <span>SGST (Intra-state):</span> <span>₹{(gstTotal / 2).toFixed(2)}</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
                       <span>Delivery Fee:</span> <span>₹{cartTotal > 0 ? deliveryFee : 0}</span>
