@@ -101,6 +101,18 @@ This project is configured for **zero-config Serverless deployment** on Vercel.
 └── next.config.mjs       # Next.js configuration
 ```
 
+## 👨‍💻 Creators
+
+**Yashowardhan**
+- GitHub: [@yashosw10](https://github.com/yashosw10)
+- LinkedIn: [Yashowardhan](https://www.linkedin.com/in/yashowardhansw/)
+
+**Aryan Gaur**
+- GitHub: [@Aryangaur-code](https://github.com/Aryangaur-code)
+- LinkedIn: [Aryan Gaur](https://www.linkedin.com/in/aryan-gaur-bb8349293/)
+
+---
+
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome!
 
