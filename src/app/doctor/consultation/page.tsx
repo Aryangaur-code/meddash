@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styles from './consultation.module.css';
 import { currentConsultation } from '@/data/mockData';
@@ -9,7 +9,7 @@ import { EntityPill } from '@/components/shared/EntityPill';
 import { KnowledgeGraphInsights, GraphRelationship } from '@/components/shared/KnowledgeGraphInsights';
 import { IconMicrophone, IconSend } from '@tabler/icons-react';
 
-export default function Consultation() {
+function ConsultationContent() {
   const searchParams = useSearchParams();
   const patientId = searchParams.get('patientId') || 'Unknown';
   
@@ -183,5 +183,13 @@ export default function Consultation() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Consultation() {
+  return (
+    <Suspense fallback={<div style={{color: 'var(--text-primary)', padding: '24px'}}>Loading secure consultation...</div>}>
+      <ConsultationContent />
+    </Suspense>
   );
 }

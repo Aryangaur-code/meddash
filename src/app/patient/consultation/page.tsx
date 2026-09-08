@@ -1,10 +1,10 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { IconSend, IconMicrophone } from '@tabler/icons-react';
 import { useAppContext } from '@/context/AppContext';
 
-export default function PatientConsultation() {
+function PatientConsultationContent() {
   const searchParams = useSearchParams();
   const doctorId = searchParams.get('doctorId');
   const { patients } = useAppContext();
@@ -127,5 +127,13 @@ export default function PatientConsultation() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function PatientConsultation() {
+  return (
+    <Suspense fallback={<div style={{color: 'var(--text-primary)', padding: '24px'}}>Connecting to doctor...</div>}>
+      <PatientConsultationContent />
+    </Suspense>
   );
 }
