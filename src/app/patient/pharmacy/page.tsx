@@ -178,7 +178,7 @@ export default function PharmacyConnect() {
                           height="150" 
                           frameBorder="0" 
                           scrolling="no" 
-                          src={`https://www.openstreetmap.org/export/embed.html?bbox=75.7%2C26.9%2C75.8%2C27.0&amp;layer=mapnik&amp;marker=26.9124%2C75.7873`} 
+                          src={`https://www.openstreetmap.org/export/embed.html?bbox=75.75%2C26.85%2C75.85%2C26.95&layer=mapnik&marker=26.9124%2C75.7873`} 
                           style={{ border: '1px solid var(--border-subtle)', borderRadius: '8px' }}
                         ></iframe>
                       </div>
