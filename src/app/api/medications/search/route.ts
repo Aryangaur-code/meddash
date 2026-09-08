@@ -1,7 +1,4 @@
 import { NextResponse } from 'next/server';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-import path from 'path';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -11,25 +8,13 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Missing query parameter q' }, { status: 400 });
   }
 
-  try {
-    // Open the SQLite database
-    const dbPath = path.join(process.cwd(), 'mid.db');
-    const db = await open({
-      filename: dbPath,
-      driver: sqlite3.Database
-    });
+  // MOCK DEMO RESPONSE (1GB local SQLite database removed for Vercel Serverless deployment)
+  const mockMedications = [
+    { id: 1, Name: `${q.toUpperCase()} 500mg (Generic)`, Therapeutic_Class: 'Analgesic', Action_Class: 'Pain Relief', Standard_FDA_Name: q },
+    { id: 2, Name: `${q.toUpperCase()} Extended Release 1000mg`, Therapeutic_Class: 'Analgesic', Action_Class: 'Pain Relief', Standard_FDA_Name: q },
+    { id: 3, Name: `${q.toUpperCase()} Oral Suspension 100ml`, Therapeutic_Class: 'Antibiotic', Action_Class: 'Infection Control', Standard_FDA_Name: q },
+    { id: 4, Name: `${q.toUpperCase()} + Compound`, Therapeutic_Class: 'Anti-inflammatory', Action_Class: 'Fever & Pain', Standard_FDA_Name: q },
+  ];
 
-    // Perform search using LIKE on the Name column, limit to 20 results
-    const medications = await db.all(
-      `SELECT * FROM medications WHERE Name LIKE ? LIMIT 20`,
-      [`%${q}%`]
-    );
-
-    await db.close();
-
-    return NextResponse.json({ medications }, { status: 200 });
-  } catch (error) {
-    console.error('Error querying mid.db:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-  }
+  return NextResponse.json({ medications: mockMedications }, { status: 200 });
 }
