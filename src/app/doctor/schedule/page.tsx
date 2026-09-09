@@ -122,7 +122,10 @@ export default function DoctorSchedule() {
                   </button>
                   <button 
                     className={`${styles.actionBtn} ${selectedApt.status === 'Consulting' ? styles.primary : ''}`}
-                    onClick={() => updateStatus('Consulting')}
+                    onClick={() => {
+                      updateStatus('Consulting');
+                      window.location.href = '/doctor/consultation';
+                    }}
                   >
                     Start Consult
                   </button>

@@ -40,7 +40,7 @@ export default function Topbar({ toggleContext }: { toggleContext: () => void })
     <header className={styles.topbar}>
       <div className={styles.left}>
         <IconSquarePlus size={26} color="var(--color-accent)" />
-        <span className={styles.institutionName}>City General Hospital</span>
+        <span className={styles.institutionName}>MedDash Hospital</span>
       </div>
 
       <div className={styles.center}>
