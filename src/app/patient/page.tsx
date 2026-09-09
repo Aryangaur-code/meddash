@@ -67,6 +67,26 @@ export default function PatientDashboard() {
         <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '32px', marginBottom: '16px' }}>Find the Best Doctors in Rajasthan</h1>
         <p style={{ color: 'var(--color-text-muted)', fontSize: '18px', marginBottom: '32px' }}>Search by category, symptoms, or location.</p>
         
+        {/* Direct Connect Section */}
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px', background: 'var(--color-surface-base)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)', marginBottom: '32px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
+          <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>Direct Connect:</span>
+          <input 
+            type="text" 
+            placeholder="Enter Doctor ID (e.g., DOC-1)" 
+            id="doctor-id-input"
+            style={{ padding: '10px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', outline: 'none', background: 'var(--color-surface-raised)', color: 'var(--color-text-primary)', width: '240px' }}
+          />
+          <button 
+            onClick={() => {
+              const docId = (document.getElementById('doctor-id-input') as HTMLInputElement).value.trim();
+              if (docId) window.location.href = `/patient/consultation?doctorId=${docId}`;
+            }}
+            style={{ padding: '10px 20px', background: 'var(--color-accent)', color: 'white', border: 'none', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: 600 }}
+          >
+            Connect
+          </button>
+        </div>
+        
         {/* Symptom Tags */}
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginBottom: '32px' }}>
           {SYMPTOM_TAGS.map(sym => {

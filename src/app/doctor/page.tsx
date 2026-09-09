@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from './page.module.css';
 import { dashboardAnalytics } from '@/data/mockData';
@@ -12,6 +13,26 @@ export default function Dashboard() {
         <h1 className={styles.title}>Dashboard</h1>
         <p className={styles.subtitle}>Overview of your clinic for today.</p>
       </header>
+
+      {/* Direct Connect Section */}
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px', background: 'var(--color-surface-base)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)', marginBottom: '32px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
+        <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>Direct Connect:</span>
+        <input 
+          type="text" 
+          placeholder="Enter Patient ID (e.g., P-1001)" 
+          id="patient-id-input"
+          style={{ padding: '10px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', outline: 'none', background: 'var(--color-surface-raised)', color: 'var(--color-text-primary)', width: '240px' }}
+        />
+        <button 
+          onClick={() => {
+            const patId = (document.getElementById('patient-id-input') as HTMLInputElement).value.trim();
+            if (patId) window.location.href = `/doctor/consultation?patientId=${patId}`;
+          }}
+          style={{ padding: '10px 20px', background: 'var(--color-accent)', color: 'white', border: 'none', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: 600 }}
+        >
+          Connect
+        </button>
+      </div>
 
       <section className={styles.kpiGrid}>
         <div className={styles.kpiCard}>
