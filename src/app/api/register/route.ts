@@ -28,8 +28,8 @@ export async function POST(request: Request) {
     }
     
     return NextResponse.json({ error: 'Invalid role' }, { status: 400 });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Register API Error:', error);
-    return NextResponse.json({ error: 'Failed to register' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to register', details: error.message }, { status: 500 });
   }
 }

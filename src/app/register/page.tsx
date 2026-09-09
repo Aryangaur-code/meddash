@@ -62,7 +62,7 @@ export default function RegisterPage() {
         setUserId(data.id);
         setRole(activeRole);
       } else {
-        alert('Registration failed');
+        alert('Registration failed: ' + (data.details || data.error || 'Unknown error'));
       }
     } catch (e) {
       console.error(e);
