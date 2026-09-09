@@ -61,31 +61,42 @@ export default function PatientDashboard() {
     }, 1000);
   };
 
+  const [directDocId, setDirectDocId] = useState('');
+  
+  const handleDirectConnect = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!directDocId) return;
+    try {
+      const res = await fetch(`/api/doctor/search?id=${directDocId}`);
+      const data = await res.json();
+      if (data && !data.error) {
+        window.location.href = `/patient/consultation?doctorId=${data.id}`;
+      } else {
+        alert('Doctor not found with that ID.');
+      }
+    } catch (e) {
+      alert('Error searching for doctor.');
+    }
+  };
+
   return (
     <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '48px 32px' }}>
+      
+      {/* Connect By ID Section */}
+      <div style={{ backgroundColor: 'var(--color-surface-base)', border: '1px solid var(--color-accent)', borderRadius: 'var(--radius-lg)', padding: '24px', marginBottom: '32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div>
+          <h2 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: '4px' }}>Already know your doctor?</h2>
+          <p style={{ fontSize: '14px', color: 'var(--color-text-muted)' }}>Enter their Unique Doctor ID to connect immediately.</p>
+        </div>
+        <form onSubmit={handleDirectConnect} style={{ display: 'flex', gap: '8px' }}>
+          <input type="text" placeholder="e.g. DOC-12345" value={directDocId} onChange={e => setDirectDocId(e.target.value)} style={{ padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', outline: 'none', backgroundColor: 'var(--color-surface-raised)' }} />
+          <button type="submit" style={{ padding: '12px 24px', backgroundColor: 'var(--color-accent)', color: 'white', border: 'none', borderRadius: 'var(--radius-md)', fontWeight: 600, cursor: 'pointer' }}>Connect</button>
+        </form>
+      </div>
+
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
         <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '32px', marginBottom: '16px' }}>Find the Best Doctors in Rajasthan</h1>
         <p style={{ color: 'var(--color-text-muted)', fontSize: '18px', marginBottom: '32px' }}>Search by category, symptoms, or location.</p>
-        
-        {/* Direct Connect Section */}
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px', background: 'var(--color-surface-base)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)', marginBottom: '32px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-          <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>Direct Connect:</span>
-          <input 
-            type="text" 
-            placeholder="Enter Doctor ID (e.g., DOC-1)" 
-            id="doctor-id-input"
-            style={{ padding: '10px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', outline: 'none', background: 'var(--color-surface-raised)', color: 'var(--color-text-primary)', width: '240px' }}
-          />
-          <button 
-            onClick={() => {
-              const docId = (document.getElementById('doctor-id-input') as HTMLInputElement).value.trim();
-              if (docId) window.location.href = `/patient/consultation?doctorId=${docId}`;
-            }}
-            style={{ padding: '10px 20px', background: 'var(--color-accent)', color: 'white', border: 'none', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: 600 }}
-          >
-            Connect
-          </button>
-        </div>
         
         {/* Symptom Tags */}
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginBottom: '32px' }}>

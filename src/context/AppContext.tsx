@@ -6,6 +6,7 @@ type Role = 'none' | 'doctor' | 'patient' | 'pharmacy';
 
 interface AppState {
   role: Role;
+  userId: string | null;
   doctorProfile: any;
   doctorsList: any[];
   patients: any[];
@@ -13,6 +14,7 @@ interface AppState {
   prescriptions: any[];
   analytics: any;
   setRole: (role: Role) => void;
+  setUserId: (id: string | null) => void;
   updateDoctorProfile: (profile: any) => void;
   addPatient: (patient: any) => void;
   updateClaimStatus: (id: string, status: string) => void;
@@ -24,6 +26,7 @@ interface AppState {
 
 const defaultState: AppState = {
   role: 'none',
+  userId: null,
   doctorProfile: null,
   doctorsList: [],
   patients: [],
@@ -31,6 +34,7 @@ const defaultState: AppState = {
   prescriptions: [],
   analytics: null,
   setRole: () => {},
+  setUserId: () => {},
   updateDoctorProfile: () => {},
   addPatient: () => {},
   updateClaimStatus: () => {},
@@ -44,6 +48,7 @@ const AppContext = createContext<AppState>(defaultState);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [role, setRoleState] = useState<Role>('none');
+  const [userId, setUserIdState] = useState<string | null>(null);
   const [docProfile, setDocProfile] = useState<any>(doctorProfile);
   const [patients, setPatients] = useState<any[]>(mockPatients);
   const [claims, setClaims] = useState<any[]>(mockClaims);
@@ -62,22 +67,34 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   // Load from database on mount
   useEffect(() => {
     const savedRole = localStorage.getItem('meddash_role');
+    const savedId = localStorage.getItem('meddash_user_id');
     if (savedRole) setRoleState(savedRole as Role);
+    if (savedId) setUserIdState(savedId);
 
-    // Fetch from MongoDB
-    fetch('/api/doctor')
-      .then(res => res.json())
-      .then(data => {
-        if (data && !data.error) setDocProfile(data);
-      })
-      .catch(console.error);
-
-    fetch('/api/patients')
-      .then(res => res.json())
-      .then(data => {
-        if (data && !data.error) setPatients(data);
-      })
-      .catch(console.error);
+    if (savedId) {
+      if (savedRole === 'doctor') {
+        fetch(`/api/doctor/search?id=${savedId}`)
+          .then(res => res.json())
+          .then(data => { if (data && !data.error) setDocProfile(data); })
+          .catch(console.error);
+      } else if (savedRole === 'patient') {
+        fetch(`/api/patients/search?id=${savedId}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data && !data.error) {
+              setPatients(prev => {
+                const filtered = prev.filter(p => p.id !== data.id);
+                return [data, ...filtered];
+              });
+            }
+          })
+          .catch(console.error);
+      }
+    } else {
+      // Fallback mocks
+      fetch('/api/doctor').then(res => res.json()).then(data => { if (data && !data.error) setDocProfile(data); }).catch(console.error);
+      fetch('/api/patients').then(res => res.json()).then(data => { if (data && !data.error) setPatients(data); }).catch(console.error);
+    }
 
     const savedClaims = localStorage.getItem('meddash_claims');
     if (savedClaims) setClaims(JSON.parse(savedClaims));
@@ -86,6 +103,15 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const setRole = (newRole: Role) => {
     setRoleState(newRole);
     localStorage.setItem('meddash_role', newRole);
+  };
+
+  const setUserId = (id: string | null) => {
+    setUserIdState(id);
+    if (id) {
+      localStorage.setItem('meddash_user_id', id);
+    } else {
+      localStorage.removeItem('meddash_user_id');
+    }
   };
 
   const updateDoctorProfile = async (profile: any) => {
@@ -190,6 +216,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AppContext.Provider value={{
       role, setRole,
+      userId, setUserId,
       doctorProfile: docProfile, updateDoctorProfile,
       doctorsList,
       patients, addPatient,

@@ -61,6 +61,42 @@ export default function Patients() {
         </div>
         
         <div className={styles.patientList}>
+          {/* Connect By ID Section */}
+          <div style={{ padding: '16px', borderBottom: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface-raised)' }}>
+            <h3 style={{ fontSize: '12px', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '8px' }}>Find by Patient ID</h3>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <input 
+                type="text" 
+                placeholder="e.g. P-12345" 
+                id="patient-search-input"
+                style={{ flex: 1, padding: '8px 12px', borderRadius: '4px', border: '1px solid var(--color-border)', outline: 'none', backgroundColor: 'var(--color-surface-base)' }} 
+              />
+              <button 
+                onClick={async () => {
+                  const val = (document.getElementById('patient-search-input') as HTMLInputElement)?.value;
+                  if (!val) return;
+                  try {
+                    const res = await fetch(`/api/patients/search?id=${val}`);
+                    const data = await res.json();
+                    if (data && !data.error) {
+                      if (!patients.find(p => p.id === data.id)) {
+                        addPatient(data); // adds to context list temporarily
+                      }
+                      setSelectedPatientId(data.id);
+                      setIsAdding(false);
+                    } else {
+                      alert('Patient not found');
+                    }
+                  } catch (e) {
+                    alert('Search failed');
+                  }
+                }}
+                style={{ padding: '8px 16px', backgroundColor: 'var(--color-accent)', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                Search
+              </button>
+            </div>
+          </div>
+
           {patients.map(p => (
             <div key={p.id} className={styles.patientItem} onClick={() => {setSelectedPatientId(p.id); setIsAdding(false);}}>
               <div className={styles.patientHeader}>
