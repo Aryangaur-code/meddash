@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { IconBone, IconScan, IconHeartbeat } from '@tabler/icons-react';
 import XRayAnalysis from './XRayAnalysis';
 import CTAnalysis from './CTAnalysis';
@@ -9,47 +9,15 @@ type Tab = 'xray' | 'ct' | 'ecg';
 
 export default function UnifiedAnalysis() {
   const [activeTab, setActiveTab] = useState<Tab>('xray');
-  const [geminiKey, setGeminiKey] = useState('');
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setGeminiKey(localStorage.getItem('gemini_api_key') || '');
-    }
-  }, []);
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px' }}>
       
       {/* Header and Tabs */}
       <div style={{ marginBottom: '32px', borderBottom: '1px solid var(--color-border)' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: 'var(--color-text-primary)', marginBottom: '24px' }}>
-            AI Diagnostics Hub
-          </h1>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>Gemini API Key:</span>
-            <input 
-              type="password" 
-              placeholder="Enter API Key..." 
-              value={geminiKey}
-              style={{
-                padding: '8px 12px',
-                borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--color-border)',
-                background: 'var(--color-surface-overlay)',
-                color: 'var(--color-text-primary)',
-                fontSize: '13px',
-                width: '240px'
-              }}
-              onChange={(e) => {
-                setGeminiKey(e.target.value);
-                if (typeof window !== 'undefined') {
-                  localStorage.setItem('gemini_api_key', e.target.value);
-                }
-              }}
-            />
-          </div>
-        </div>
+        <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: 'var(--color-text-primary)', marginBottom: '24px' }}>
+          AI Diagnostics Hub
+        </h1>
         
         <div style={{ display: 'flex', gap: '8px' }}>
           <button 
