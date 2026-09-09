@@ -290,7 +290,15 @@ export default function Patients() {
                 <div style={{ backgroundColor: 'var(--color-surface-base)', border: '1px solid var(--color-border)', borderRadius: '8px', overflow: 'hidden' }}>
                   <div style={{ backgroundColor: 'var(--color-surface-overlay)', padding: '12px 16px', borderBottom: '1px solid var(--color-border)', fontWeight: 600, fontSize: '14px', color: 'var(--color-text-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span>📁 Documents | Notes</span>
-                    <span style={{ fontSize: '12px', color: 'var(--color-accent)', cursor: 'pointer' }}>+ Add new note</span>
+                    <label style={{ fontSize: '12px', color: 'var(--color-accent)', cursor: 'pointer' }}>
+                      + Add PDF
+                      <input 
+                        type="file" 
+                        accept="application/pdf" 
+                        style={{ display: 'none' }} 
+                        onChange={handleReportUpload} 
+                      />
+                    </label>
                   </div>
                   <div style={{ padding: '16px', fontSize: '13px', color: 'var(--color-text-muted)', lineHeight: '1.5' }}>
                     <p style={{ margin: '0 0 12px 0' }}>Patient followed up regarding previously discussed symptoms. Advised to continue current medication regimen. Will review labs next visit.</p>

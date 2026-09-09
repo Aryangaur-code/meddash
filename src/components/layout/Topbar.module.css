@@ -49,12 +49,11 @@
   height: 36px;
   width: 100%;
   max-width: 480px;
-  cursor: pointer;
   transition: border-color var(--transition-util);
   color: var(--color-text-muted);
 }
 
-.searchBar:hover {
+.searchBar:hover, .searchBar:focus-within {
   border-color: var(--color-border-strong);
 }
 
@@ -62,10 +61,17 @@
   margin-right: 8px;
 }
 
-.searchPlaceholder {
+.searchInput {
   flex: 1;
-  text-align: left;
+  background: transparent;
+  border: none;
+  outline: none;
   font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-muted);
 }
 
 .searchShortcut {

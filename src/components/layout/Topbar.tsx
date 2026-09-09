@@ -15,6 +15,7 @@ export default function Topbar({ toggleContext }: { toggleContext: () => void })
 
   // Close dropdowns on click outside (optional but good practice)
   const profileRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -24,7 +25,7 @@ export default function Topbar({ toggleContext }: { toggleContext: () => void })
       }
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        // open command palette
+        searchInputRef.current?.focus();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -43,11 +44,16 @@ export default function Topbar({ toggleContext }: { toggleContext: () => void })
       </div>
 
       <div className={styles.center}>
-        <button className={styles.searchBar} onClick={() => alert('Search command palette opened!')}>
+        <div className={styles.searchBar} onClick={() => searchInputRef.current?.focus()}>
           <IconSearch size={18} className={styles.searchIcon} />
-          <span className={styles.searchPlaceholder}>Search patients, drugs, ICD codes...</span>
+          <input
+            ref={searchInputRef}
+            type="text"
+            className={styles.searchInput}
+            placeholder="Search patients, drugs, ICD codes..."
+          />
           <span className={styles.searchShortcut}>⌘K</span>
-        </button>
+        </div>
       </div>
 
       <div className={styles.right}>
