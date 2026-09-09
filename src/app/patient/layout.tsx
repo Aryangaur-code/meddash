@@ -14,29 +14,37 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
           <IconUserHeart size={24} />
           Patient Portal
         </div>
-        <nav style={{ display: 'flex', gap: '24px' }}>
-          <Link href="/patient" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient' ? 700 : 500 }}>
-            <IconStethoscope size={18} /> Find Doctor
+        <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          <nav style={{ display: 'flex', gap: '24px' }}>
+            <Link href="/patient" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient' ? 700 : 500 }}>
+              <IconStethoscope size={18} /> Find Doctor
+            </Link>
+            <Link href="/patient/health" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/health' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/health' ? 700 : 500 }}>
+              <IconActivity size={18} /> Fitness + Vitals
+            </Link>
+            <Link href="/patient/records" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/records' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/records' ? 700 : 500 }}>
+              <IconCalendarEvent size={18} /> My Records
+            </Link>
+            <Link href="/patient/diagnostics" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname.includes('/patient/diagnostics') ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname.includes('/patient/diagnostics') ? 700 : 500 }}>
+              <IconBrain size={18} /> AI Diagnostics
+            </Link>
+            <Link href="/patient/intake" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/intake' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/intake' ? 700 : 500 }}>
+              <IconClipboardText size={18} /> AI Intake
+            </Link>
+            <Link href="/patient/medications" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/medications' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/medications' ? 700 : 500 }}>
+              <IconPill size={18} /> Drug Info
+            </Link>
+            <Link href="/patient/pharmacy" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/pharmacy' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/pharmacy' ? 700 : 500 }}>
+              <IconBuildingStore size={18} /> Pharmacy Connect
+            </Link>
+          </nav>
+
+          <Link href="/patient/profile" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: 'var(--color-text-primary)' }}>
+            <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--color-accent)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '14px' }}>
+              RK
+            </div>
           </Link>
-          <Link href="/patient/health" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/health' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/health' ? 700 : 500 }}>
-            <IconActivity size={18} /> Fitness + Vitals
-          </Link>
-          <Link href="/patient/records" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/records' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/records' ? 700 : 500 }}>
-            <IconCalendarEvent size={18} /> My Records
-          </Link>
-          <Link href="/patient/diagnostics" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname.includes('/patient/diagnostics') ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname.includes('/patient/diagnostics') ? 700 : 500 }}>
-            <IconBrain size={18} /> AI Diagnostics
-          </Link>
-          <Link href="/patient/intake" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/intake' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/intake' ? 700 : 500 }}>
-            <IconClipboardText size={18} /> AI Intake
-          </Link>
-          <Link href="/patient/medications" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/medications' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/medications' ? 700 : 500 }}>
-            <IconPill size={18} /> Drug Info
-          </Link>
-          <Link href="/patient/pharmacy" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/pharmacy' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/pharmacy' ? 700 : 500 }}>
-            <IconBuildingStore size={18} /> Pharmacy Connect
-          </Link>
-        </nav>
+        </div>
       </header>
       <main style={{ flex: 1, backgroundColor: 'var(--color-surface-raised)', overflowY: 'auto', position: 'relative' }}>
         {children}
