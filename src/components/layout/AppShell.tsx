@@ -37,8 +37,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className={styles.appShell}>
-      {/* Panel 1: Icon-only vertical nav rail */}
-      <Sidebar />
+      {/* Panel 1 removed */}
 
       {/* Panel 2 & 3 wrapper */}
       <div className={styles.mainWrapper}>
