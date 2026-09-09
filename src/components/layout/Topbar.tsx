@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './Topbar.module.css';
-import { IconSearch, IconBell, IconUser, IconSettings, IconLogout } from '@tabler/icons-react';
+import { IconSearch, IconBell, IconUser, IconSettings, IconLogout, IconSquarePlus } from '@tabler/icons-react';
 import { useAppContext } from '@/context/AppContext';
 import { useRouter } from 'next/navigation';
 
@@ -39,7 +39,7 @@ export default function Topbar({ toggleContext }: { toggleContext: () => void })
   return (
     <header className={styles.topbar}>
       <div className={styles.left}>
-        <div className={styles.logoPlaceholder}></div>
+        <IconSquarePlus size={26} color="var(--color-accent)" />
         <span className={styles.institutionName}>City General Hospital</span>
       </div>
 
