@@ -9,6 +9,7 @@ import {
   IconStethoscope,
   IconRun
 } from '@tabler/icons-react';
+import { useAppContext } from '@/context/AppContext';
 
 type AppointmentStatus = 'Scheduled' | 'Waiting' | 'Consulting' | 'Completed';
 
@@ -32,6 +33,7 @@ const mockSchedule: Appointment[] = [
 ];
 
 export default function DoctorSchedule() {
+  const { patients } = useAppContext();
   const [appointments, setAppointments] = useState<Appointment[]>(mockSchedule);
   const [selectedAptId, setSelectedAptId] = useState<string>('APT-3'); // Default to current
 
@@ -124,7 +126,9 @@ export default function DoctorSchedule() {
                     className={`${styles.actionBtn} ${selectedApt.status === 'Consulting' ? styles.primary : ''}`}
                     onClick={() => {
                       updateStatus('Consulting');
-                      window.location.href = '/doctor/consultation';
+                      const realPatient = patients.find((p: any) => p.name === selectedApt.patient);
+                      const pid = realPatient ? realPatient.id : 'Unknown';
+                      window.location.href = `/doctor/consultation?patientId=${pid}`;
                     }}
                   >
                     Start Consult
