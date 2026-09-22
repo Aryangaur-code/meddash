@@ -50,25 +50,38 @@ export default function XRayAnalysis() {
     setError(null);
     setResult(null);
 
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-
     try {
-      // Connect to the local FastAPI server
-      const response = await fetch("http://localhost:8000/api/analyze-xray", {
-        method: "POST",
-        body: formData,
-      });
+      // MOCK DEMO RESPONSE FOR VERCEL DEPLOYMENT
+      // Since a heavy PyTorch FastAPI backend cannot be hosted on Vercel Serverless,
+      // we mock the AI response for demonstration purposes.
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate AI processing time
 
-      if (!response.ok) {
-        throw new Error("Analysis server failed to process the image.");
-      }
+      const mockData = {
+        prediction: "fractured",
+        confidence: 0.984,
+        fracture_probability: 0.984,
+        heatmap: previewUrl, // Re-using uploaded image as mock heatmap placeholder
+        details: {
+          exact_location: "Distal radius / ulna region",
+          proximity_notes: "Cortical disruption detected. High probability of fracture.",
+          recommendation: "Immediate orthopedic consultation and immobilization recommended.",
+          ai_solutions: [
+            "Immobilize the affected limb with a splint.",
+            "Apply ice to reduce swelling.",
+            "Avoid bearing any weight or stress on the joint.",
+            "Prepare for possible casting or surgical fixation depending on displacement."
+          ],
+          associated_doctors: [
+            { name: "Dr. A. Sharma", specialty: "Orthopedic Surgeon", distance: "2.1 km", available: "Available Today" },
+            { name: "City Bone & Joint Clinic", specialty: "Trauma Center", distance: "4.5 km", available: "24/7 ER" }
+          ]
+        }
+      };
 
-      const data = await response.json();
-      setResult(data);
+      setResult(mockData);
     } catch (err: any) {
       console.error(err);
-      setError("Failed to connect to the X-Ray AI model. Please ensure the backend is running.");
+      setError("Failed to process the X-Ray.");
     } finally {
       setIsAnalyzing(false);
     }
