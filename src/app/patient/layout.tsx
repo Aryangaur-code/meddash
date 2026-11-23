@@ -16,7 +16,7 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
           <nav style={{ display: 'flex', gap: '24px' }}>
-            <Link href="/patient" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient' ? 700 : 500 }}>
+            <Link href="/patient/doctors" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient' ? 700 : 500 }}>
               <IconStethoscope size={18} /> Find Doctor
             </Link>
             <Link href="/patient/health" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: pathname === '/patient/health' ? 'var(--color-accent)' : 'var(--color-text-muted)', textDecoration: 'none', fontWeight: pathname === '/patient/health' ? 700 : 500 }}>
@@ -53,3 +53,4 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
     </div>
   );
 }
+
