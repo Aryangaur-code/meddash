@@ -6,8 +6,9 @@
 
 .headerBanner {
   height: 200px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, #1E3A8A 100%);
+  background: linear-gradient(135deg, #0b1528 0%, #172554 50%, #1e3a8a 100%);
   width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .profileContent {
@@ -238,24 +239,43 @@
 .editBtn {
   margin-top: 16px;
   width: 100%;
-  padding: 8px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface-raised);
+  padding: 10px 16px;
+  border: 1px solid #3b82f6;
+  background: #2563eb;
+  color: #ffffff;
   border-radius: var(--radius-md);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}
+
+.editBtn:hover {
+  background: #1d4ed8;
+  border-color: #60a5fa;
+  transform: translateY(-1px);
 }
 
 .inputField, .textareaField {
   width: 100%;
-  padding: 8px;
+  padding: 10px 12px;
   margin-bottom: 8px;
-  border: 1px solid var(--color-border);
+  border: 1px solid #334155;
   border-radius: var(--radius-sm);
-  background: var(--color-surface-base);
+  background: #1e293b;
+  color: #f8fafc;
   font-family: var(--font-sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.inputField:focus, .textareaField:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
 }

@@ -24,16 +24,16 @@ function getStars(): number {
 }
 
 const navItems = [
-  { icon: IconLayoutDashboard, label: 'Dashboard', path: '/doctor' },
-  { icon: IconCalendarEvent, label: 'Schedule', path: '/doctor/schedule' },
-  { icon: IconStethoscope, label: 'Consultations', path: '/doctor/consultation' },
-  { icon: IconUsers, label: 'Patients', path: '/doctor/patients' },
-  { icon: IconPill, label: 'Prescriptions', path: '/doctor/prescriptions' },
-  { icon: IconFileInvoice, label: 'Claims', path: '/doctor/claims' },
-  { icon: IconUsers, label: 'Specialist Network', path: '/doctor/network' },
-  { icon: IconChartBar, label: 'Analytics', path: '/doctor/analytics' },
-  { icon: IconTag, label: 'Image Labelling', path: '/doctor/labelling', badge: true },
-  { icon: IconSettings, label: 'Settings', path: '/doctor/settings' },
+  { icon: IconLayoutDashboard, label: 'Dashboard', path: '/doctor', highlight: false },
+  { icon: IconCalendarEvent, label: 'Schedule', path: '/doctor/schedule', highlight: false },
+  { icon: IconStethoscope, label: 'Consultations', path: '/doctor/consultation', highlight: false },
+  { icon: IconUsers, label: 'Patients', path: '/doctor/patients', highlight: false },
+  { icon: IconPill, label: 'Prescriptions', path: '/doctor/prescriptions', highlight: false },
+  { icon: IconFileInvoice, label: 'Claims', path: '/doctor/claims', highlight: false },
+  { icon: IconUsers, label: 'Specialist Network', path: '/doctor/network', highlight: false },
+  { icon: IconChartBar, label: 'Analytics', path: '/doctor/analytics', highlight: false },
+  { icon: IconTag, label: 'Image Labelling', path: '/doctor/labelling', badge: true, highlight: true },
+  { icon: IconSettings, label: 'Settings', path: '/doctor/settings', highlight: false },
 ];
 
 export default function Sidebar() {
@@ -54,9 +54,17 @@ export default function Sidebar() {
               title={item.label === 'Image Labelling' ? `Image Labelling Credits ⭐ ${stars} stars` : item.label}
               aria-label={item.label}
               onClick={() => router.push(item.path)}
-              style={{ position: 'relative' }}
+              style={{
+                position: 'relative',
+                ...(item.highlight && !isActive ? {
+                  background: 'linear-gradient(135deg, #fef3c722, #f59e0b11)',
+                  borderLeft: '2px solid #f59e0b',
+                  color: '#f59e0b',
+                } : {})
+              }}
             >
-              <Icon size={24} stroke={isActive ? 2.5 : 1.5} className={styles.icon} />
+              <Icon size={24} stroke={isActive ? 2.5 : 1.5} className={styles.icon}
+                color={item.highlight && !isActive ? '#f59e0b' : undefined} />
               {/* Star badge on Image Labelling icon */}
               {item.badge && stars > 0 && (
                 <span style={{
@@ -67,6 +75,16 @@ export default function Sidebar() {
                   textAlign: 'center', pointerEvents: 'none'
                 }}>
                   {stars}
+                </span>
+              )}
+              {/* NEW label shown below icon for Image Labelling */}
+              {item.highlight && (
+                <span style={{
+                  position: 'absolute', bottom: '-2px', left: '50%', transform: 'translateX(-50%)',
+                  fontSize: '7px', fontWeight: 800, color: '#f59e0b',
+                  letterSpacing: '0.3px', whiteSpace: 'nowrap', pointerEvents: 'none'
+                }}>
+                  LABELS
                 </span>
               )}
             </button>
